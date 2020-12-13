@@ -10,9 +10,15 @@ import { IPagination } from './shared/models/pagination';
 export class AppComponent implements OnInit{
     title = 'SkiNet';
 
-    constructor(private http: HttpClient) {}
+    constructor(private basketService, private http: HttpClient) {}
 
     ngOnInit(): void {
+      const basketId = localStorage.getItem('basket_id');
+      if (basketId) {
+        this.basketService.getBasket(basketId)
+          .subscribe();
+
+      }
     }
     }
 
