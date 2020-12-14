@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 
 
 
+
 @NgModule({
   declarations: [NavBarComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent, SectionHeaderComponent],
   imports: [
@@ -22,7 +23,8 @@ import { SharedModule } from '../shared/shared.module';
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
-    })
+    }),
+
   ],
   exports: [
     NavBarComponent,
