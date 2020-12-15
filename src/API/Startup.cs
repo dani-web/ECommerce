@@ -48,13 +48,12 @@ namespace API
                 x.UseSqlite(_configuration.GetConnectionString("IdentityConnection"));
             });
 
-            services.AddSingleton<IConnectionMultiplexer>(c =>
-            {
-                var configuration = ConfigurationOptions.Parse(_configuration.GetConnectionString("Redis"),
-                    true);
+            services.AddSingleton<IConnectionMultiplexer>(c => {
+                var configuration = ConfigurationOptions.Parse(_configuration
+                    .GetConnectionString("Redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);
-            });        
-            
+            });
+
             services.AddApplicationServices();
             services.AddIdentityServices(_configuration);
             services.AddSwaggerDocumentation();

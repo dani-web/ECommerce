@@ -41,7 +41,6 @@ namespace Infrastructure.Data
                     }
                     await context.SaveChangesAsync();
                 }*/
-
                  if (!context.Products.Any())
                 {
                     var productsData = File.ReadAllText("../Infrastructure/Data/SeedData/Products.json");
@@ -51,6 +50,19 @@ namespace Infrastructure.Data
                     foreach (var item in products)
                     {
                         context.Products.Add(item);
+                    }
+                    await context.SaveChangesAsync();
+                }
+
+                if (!context.DeliveryMethods.Any())
+                {
+                    var dmData = File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
+
+                    var dmSerialize = JsonSerializer.Deserialize<List<Core.Entities.OrderAggregate.DeliveryMethod>>(dmData);
+
+                    foreach (var item in dmSerialize)
+                    {
+                        context.DeliveryMethods.Add(item);
                     }
                     await context.SaveChangesAsync();
                 }
